@@ -187,4 +187,118 @@ var isValid = function(s) {
     return res.length === 0;
 };
 
+
+5.  Intersection of Two Arrays
+This project contains a simple JavaScript function that returns the intersection of two arrays — that is, the elements common to both arrays, without duplicates.
+
+📌 Problem Statement
+Given two integer arrays nums1 and nums2, return an array of their intersection.
+Each element in the result must be unique, and you may return the result in any order.
+
+✅ Example
+
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [9,4] or [4,9]
+
+🔍 Approach
+Convert both input arrays to Sets to eliminate duplicates.
+
+Iterate through one set and check if each element exists in the other set.
+
+If yes, push it to the result array.
+
+Return the result.
+
+This approach ensures time-efficient lookup using the Set.has() method.
+
+🧠 Code Explanation
+
+var intersection = function(nums1, nums2) {
+    let set1 = new Set(nums1);      // Remove duplicates from nums1
+    let set2 = new Set(nums2);      // Remove duplicates from nums2
+    let res = [];
+
+    for (let i of set1) {           // Loop through elements of set1
+        if (set2.has(i)) {          // Check if element exists in set2
+            res.push(i);            // Add common element to result
+        }
+    }
+
+    return res;                     // Return intersection array
+};
+
+🕒 Time & Space Complexity
+Time Complexity: O(n + m), where n and m are lengths of nums1 and nums2
+
+Space Complexity: O(n + m), for the two sets used to remove duplicates
+
+📄 License
+This code is free to use for learning and educational purposes.
+
+
+6.Two Sum II - Input Array Is Sorted
+This project provides a solution to the Two Sum II problem, where you're given a sorted array and a target value, and you must find the indices of the two numbers that add up to the target.
+
+📌 Problem Statement
+Given a 1-indexed array of integers numbers that is sorted in non-decreasing order, and a target integer target, return the indices of the two numbers such that they add up to target.
+
+You must use only constant extra space and must not modify the input array.
+
+✅ Example
+
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+// Explanation: 2 + 7 = 9, and their indices (1-based) are [1,2]
+
+Input: numbers = [1,2,3,4,4,9,56,90], target = 8
+Output: [4,5]
+
+💡 Approach
+This uses the Two-Pointer Technique since the input array is already sorted:
+
+Initialize two pointers:
+
+l (left) at the start of the array
+
+r (right) at the end of the array
+
+While l < r:
+
+Calculate the sum of numbers[l] + numbers[r]
+
+If the sum is less than the target, move l to the right (increase l)
+
+If the sum is greater than the target, move r to the left (decrease r)
+
+If the sum equals the target, return [l + 1, r + 1] (1-based indices)
+
+🧠 Code Explanation
+
+var twoSum = function(numbers, target) {
+    let l = 0;                  // Left pointer
+    let r = numbers.length - 1; // Right pointer
+
+    while (l < r) {
+        let sum = numbers[l] + numbers[r];
+        if (sum < target) {
+            l++;                // Move left pointer to increase sum
+        } else if (sum > target) {
+            r--;                // Move right pointer to decrease sum
+        } else {
+            return [l + 1, r + 1]; // Return 1-based indices
+        }
+    }
+};
+
+🕒 Time & Space Complexity
+
+Time Complexity: O(n) — Each element is visited at most once.
+Space Complexity: O(1) — No extra space used apart from variables.
+
+📄 License
+This code is free to use for practice, learning, and educational purposes.
+
 -->
