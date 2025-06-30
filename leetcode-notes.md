@@ -1,4 +1,4 @@
-<!-- ## 1. Contains Duplicate
+## 1. Contains Duplicate
 
 ### ✅ Approach
 
@@ -160,9 +160,7 @@ Time: O(n) — each character is processed once.
 Space: O(n) — in worst case, all opening brackets are pushed to the stack.
 
 🧑‍💻 JavaScript Code
-js
-Copy
-Edit
+
 var isValid = function(s) {
     let obj = {
         ')': '(',
@@ -301,4 +299,143 @@ Space Complexity: O(1) — No extra space used apart from variables.
 📄 License
 This code is free to use for practice, learning, and educational purposes.
 
--->
+
+7 Remove Element – LeetCode Solution
+
+---
+
+## 🧩 Problem Description
+
+Given an integer array `nums` and an integer `val`, remove all occurrences of `val` **in-place** and return the new length of the array.
+
+Do not allocate extra space for another array — you must do this by modifying the input array in-place with **O(1)** extra memory.
+
+The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+
+
+---
+
+## 💡 Example
+
+Input: nums = [3, 2, 2, 3], val = 3  
+Output: 2, nums = [2, 2, _, _]
+
+Explanation: Your function should return length = 2, and the first two elements of nums should be 2.
+It doesn't matter what you leave beyond the returned length.
+
+✅ Constraints
+0 <= nums.length <= 100
+
+0 <= nums[i] <= 50
+
+0 <= val <= 100
+
+🚀 Solutions
+
+✅ JavaScript
+var removeElement = function(nums, val) {
+    let k = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== val) {
+            nums[k] = nums[i];
+            k++;
+        }
+    }
+    return k;
+};
+
+✅ Python
+
+def removeElement(self, nums, val):
+    k = 0
+    for i in nums:
+        if i != val:
+            nums[k] = i
+            k += 1
+    return k
+
+🧠 Explanation
+k is a pointer to place valid elements (not equal to val).
+
+If nums[i] !== val, the element is copied to index k, and k is incremented.
+
+After the loop, k is the number of elements not equal to val.
+
+🛡️ Key Takeaways
+    In-place removal using the two-pointer technique
+    O(n) time complexity
+    O(1) space complexity
+
+------------------------------------------------------------
+8 Remove Duplicates from Sorted Array – LeetCode Solution
+
+🧩 Problem Description
+
+Given a **sorted array** `nums`, remove the duplicates **in-place** such that each element appears only **once** and return the new length.
+
+Do **not** allocate extra space for another array.  
+You must do this by modifying the input array **in-place** with **O(1)** extra memory.
+
+## 💡 Example
+```txt
+Input: nums = [1, 1, 2]
+Output: 2, nums = [1, 2, _]
+Explanation: Your function should return 2, and the first two elements of nums should be 1 and 2.
+It does not matter what values are left beyond the returned length.
+````
+✅ Constraints
+1 <= nums.length <= 3 * 10^4
+
+-100 <= nums[i] <= 100
+
+nums is sorted in non-decreasing order
+
+🚀 Solutions
+
+✅ JavaScript (In-Place)
+
+var removeDuplicates = function(nums) {
+    if (nums.length === 0) return 0;
+
+    let k = 1; // Points to the place to insert unique elements
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] !== nums[i - 1]) {
+            nums[k] = nums[i];
+            k++;
+        }
+    }
+
+    return k;
+};
+
+✅ Python (In-Place)
+
+def removeDuplicates(self, nums):
+    if not nums:
+        return 0
+
+    k = 1
+    for i in range(1, len(nums)):
+        if nums[i] != nums[i - 1]:
+            nums[k] = nums[i]
+            k += 1
+    return k
+
+🧠 How It Works
+The array is already sorted.
+
+You scan the array with a loop starting from index 1.
+
+Each time you find a new unique number (i.e., different from the previous), you write it to index k.
+
+k keeps track of the position to place the next unique value.
+
+Return k as the new length of the array.
+
+🛡️ Key Takeaways
+    Efficient two-pointer approach
+    Time Complexity: O(n)
+    Space Complexity: O(1) (in-place)
+    Original array is modified; no extra memory is used.
+
