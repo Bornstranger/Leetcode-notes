@@ -235,7 +235,7 @@ Space Complexity: O(n + m), for the two sets used to remove duplicates
 This code is free to use for learning and educational purposes.
 
 
-### 6.Two Sum II - Input Array Is Sorted
+## 6.Two Sum II - Input Array Is Sorted
 
 This project provides a solution to the Two Sum II problem, where you're given a sorted array and a target value, and you must find the indices of the two numbers that add up to the target.
 
@@ -366,7 +366,7 @@ After the loop, k is the number of elements not equal to val.
 ```
 ------------------------------------------------------------
 ## 8 Remove Duplicates from Sorted Array – LeetCode Solution
-```js
+
 🧩 Problem Description
 
 Given a **sorted array** `nums`, remove the duplicates **in-place** such that each element appears only **once** and return the new length.
@@ -391,7 +391,7 @@ nums is sorted in non-decreasing order
 🚀 Solutions
 
 ✅ JavaScript (In-Place)
-
+```js
 var removeDuplicates = function(nums) {
     if (nums.length === 0) return 0;
 
@@ -445,7 +445,7 @@ Return k as the new length of the array.
 Reverse a string in-place using **O(1)** extra memory — that's the challenge!  
 
 ---
-```js
+
 ## 📘 Problem Summary
 
 You are given a character array `s`.  
@@ -490,7 +490,7 @@ Move left forward, right backward
 Continue until both pointers meet or cross
 
 🐍 Python Solution
-
+```js
 def reverseString(self, s):
     l, r = 0, len(s) - 1
     while l < r:
@@ -522,7 +522,7 @@ Space Complexity	O(1) ✅ (in-place)
 This repository contains optimized in-place solutions in **Python** and **JavaScript** for the classic **"Best Time to Buy and Sell Stock"** problem from LeetCode.
 
 ---
-```js
+
 ## 📘 Problem Summary
 
 You are given an array `prices` where `prices[i]` is the **price of a stock on day `i`**.  
@@ -561,7 +561,7 @@ Compute profit = prices[i] - minPrice
 Update maxProfit if profit is higher
 
 Update minPrice if prices[i] is lower
-
+```js
 🐍 Python Solution
 def maxProfit(self, prices):
     minPrice = prices[0]
@@ -595,4 +595,70 @@ Space Complexity	O(1) ✅
 a. No nested loops needed — single pass solution
 b. In-place and memory efficient
 c. This greedy approach is ideal for time-sensitive trading apps
+```
+
+****************************************************************************************************************
+
+## 11 🔍 Binary Search in JavaScript
+This repository contains a simple and efficient implementation of the Binary Search algorithm in JavaScript. Binary Search is a classic algorithm used to find the position of a target value within a sorted array in O(log n) time.
+
+📌 Problem Statement
+Given a sorted array of integers nums and a target value target, return the index of the target if it is present in the array. Otherwise, return -1.
+
+✅ Example
+
+Input:
+  nums = [1, 2, 3, 4, 5, 6]
+  target = 5
+
+Output:
+  4
+## 🧠 Binary Search Logic
+Start with two pointers: left = 0 and right = nums.length - 1.
+
+While left <= right:
+
+Calculate the mid index.
+
+If nums[mid] === target, return mid.
+
+If nums[mid] < target, search the right half (left = mid + 1).
+
+If nums[mid] > target, search the left half (right = mid - 1).
+
+If not found, return -1.
+
+💡 Time Complexity
+Time: O(log n)
+
+Space: O(1) (Iterative version)
+
+```js
+javascript Solution
+
+function binarySearch(nums, target) {
+    let l = 0;
+    let r = nums.length - 1;
+
+    while (l <= r) {
+        let mid = Math.floor((l + r) / 2);
+        console.log("Checking index:", mid);
+
+        if (nums[mid] === target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            l = mid + 1;
+        } else {
+            r = mid - 1;
+        }
+    }
+
+    return -1; // target not found
+}
+
+let ar = [1, 2, 3, 4, 5, 6];
+let x = 5;
+
+console.log(binarySearch(ar, x)); // Output: 4
+
 ```
