@@ -8,11 +8,6 @@
   - Otherwise, add it to the Set.
 - If loop finishes without finding duplicates, return `false`.
 
-### 🔍 Why this works:
-- A `Set` only stores unique values.
-- `Set.has()` gives O(1) average time complexity.
-- So this approach is efficient and concise.
-
 ### 🧮 Complexity
 - **Time**: O(n) — one pass through the array.
 - **Space**: O(n) — in worst case, all unique values stored in the Set.
@@ -35,31 +30,31 @@ var containsDuplicate = function(nums) {
 
 ### ✅ Approach
 
-Use an object ({}) to group words by their letter frequency.
+- Use an object ({}) to group words by their letter frequency.
 
-For each string:
+- For each string:
 
--Create an array of size 26 initialized to 0 (representing a–z).
+- Create an array of size 26 initialized to 0 (representing a–z).
 
--Increment counts for each character in the string.
+- Increment counts for each character in the string.
 
--Use the array as a key (converted to a string using join(',')).
+- Use the array as a key (converted to a string using join(',')).
 
--Push the word into the corresponding group.
+- Push the word into the corresponding group.
 
--Finally, return the values of the object.
+- Finally, return the values of the object.
 
 ## 🔍 Why this works:
-Anagrams have the same frequency of characters.
+- Anagrams have the same frequency of characters.
 
-By using a character count signature as the key, all anagrams map to the same key.
+- By using a character count signature as the key, all anagrams map to the same key.
 
-Avoids sorting each word (which is slower).
+- Avoids sorting each word (which is slower).
 
 ## 🧮 Complexity
-Time: O(N * K), where N = number of strings, K = max length of a string.
+- Time: O(N * K), where N = number of strings, K = max length of a string.
 
-Space: O(N * K) — storing grouped anagrams and character count arrays.
+- Space: O(N * K) — storing grouped anagrams and character count arrays.
 
 ## 🧑‍💻 JavaScript Code
 ```js
@@ -82,28 +77,21 @@ Space: O(N * K) — storing grouped anagrams and character count arrays.
 
 ## 3. Valid Palindrome
 
-✅ Approach
-Use two pointers (l from start, r from end) to compare characters.
+## ✅ Approach
+- Use two pointers (l from start, r from end) to compare characters.
 
-Skip non-alphanumeric characters using RegExp check (/[a-zA-Z0-9]/).
+- Skip non-alphanumeric characters using RegExp check (/[a-zA-Z0-9]/).
 
-Normalize characters with .toLowerCase() before comparison.
+- Normalize characters with .toLowerCase() before comparison.
 
-If any mismatch is found, return false; otherwise, return true.
+- If any mismatch is found, return false; otherwise, return true.
 
-🔍 Why this works:
-Palindromes should read the same forward and backward, ignoring punctuation, spaces, and case.
+## 🧮 Complexity
+- Time: O(n) — traverses the string once from both ends.
 
-This approach efficiently skips irrelevant characters and compares only valid ones.
+- Space: O(1) — no extra storage used.
 
-It avoids creating any new strings or arrays — it's in-place and minimal.
-
-🧮 Complexity
-Time: O(n) — traverses the string once from both ends.
-
-Space: O(1) — no extra storage used.
-
-🧑‍💻 JavaScript Code
+## 🧑‍💻 JavaScript Code
 ```js
 var isPalindrome = function(s) {
     let l = 0; 
@@ -126,36 +114,31 @@ var isPalindrome = function(s) {
 ```
 
 ## 4. Valid Parentheses
-✅ Approach
-Use a stack (res[]) to track open brackets.
 
-Create a map obj to match closing → opening brackets.
+## ✅ Approach
+- Use a stack (res[]) to track open brackets.
 
-Loop through each character:
+- Create a map obj to match closing → opening brackets.
 
-If it’s a closing bracket, check if the top of the stack matches its corresponding opening.
+- Loop through each character:
 
-If yes, pop() the opening from the stack.
+- If it’s a closing bracket, check if the top of the stack matches its corresponding opening.
 
-If not, return false (mismatch).
+- If yes, pop() the opening from the stack.
 
-If it’s an opening bracket, push it onto the stack.
+- If not, return false (mismatch).
 
-After processing all characters, return true only if the stack is empty (all brackets matched).
+- If it’s an opening bracket, push it onto the stack.
 
-🔍 Why this works:
-Stack ensures last opened is first closed — exactly how valid parentheses work.
+- After processing all characters, return true only if the stack is empty (all brackets matched).
 
-The map allows constant-time lookups to check for matching pairs.
 
-Unmatched or unbalanced parentheses are detected immediately.
+## 🧮 Complexity
+- Time: O(n) — each character is processed once.
 
-🧮 Complexity
-Time: O(n) — each character is processed once.
+- Space: O(n) — in worst case, all opening brackets are pushed to the stack.
 
-Space: O(n) — in worst case, all opening brackets are pushed to the stack.
-
-🧑‍💻 JavaScript Code
+## 🧑‍💻 JavaScript Code
 ```js
 var isValid = function(s) {
     let obj = {
@@ -186,11 +169,11 @@ var isValid = function(s) {
 ## 5. Intersection of Two Arrays
 This project contains a simple JavaScript function that returns the intersection of two arrays — that is, the elements common to both arrays, without duplicates.
 
-📌 Problem Statement
+## 📌 Problem Statement
 Given two integer arrays nums1 and nums2, return an array of their intersection.
 Each element in the result must be unique, and you may return the result in any order.
 
-✅ Example
+## ✅ Example
 
 Input: nums1 = [1,2,2,1], nums2 = [2,2]
 Output: [2]
@@ -199,17 +182,17 @@ Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
 Output: [9,4] or [4,9]
 
 ## 🔍 Approach
-Convert both input arrays to Sets to eliminate duplicates.
+- Convert both input arrays to Sets to eliminate duplicates.
 
-Iterate through one set and check if each element exists in the other set.
+- Iterate through one set and check if each element exists in the other set.
 
-If yes, push it to the result array.
+- If yes, push it to the result array.
 
-Return the result.
+- Return the result.
 
-This approach ensures time-efficient lookup using the Set.has() method.
+- This approach ensures time-efficient lookup using the Set.has() method.
 
-## 🧠 Code Explanation
+## 🧠 Javascipt Solution
 ```js
 var intersection = function(nums1, nums2) {
     let set1 = new Set(nums1);      
@@ -227,24 +210,21 @@ var intersection = function(nums1, nums2) {
 ```
 
 ## 🕒 Time & Space Complexity
-Time Complexity: O(n + m), where n and m are lengths of nums1 and nums2
+- Time Complexity: O(n + m), where n and m are lengths of nums1 and nums2
 
-Space Complexity: O(n + m), for the two sets used to remove duplicates
-
-📄 License
-This code is free to use for learning and educational purposes.
+- Space Complexity: O(n + m), for the two sets used to remove duplicates
 
 
 ## 6.Two Sum II - Input Array Is Sorted
 
 This project provides a solution to the Two Sum II problem, where you're given a sorted array and a target value, and you must find the indices of the two numbers that add up to the target.
 
-📌 Problem Statement
+## 📌 Problem Statement
 Given a 1-indexed array of integers numbers that is sorted in non-decreasing order, and a target integer target, return the indices of the two numbers such that they add up to target.
 
 You must use only constant extra space and must not modify the input array.
 
-✅ Example
+## ✅ Example
 
 Input: numbers = [2,7,11,15], target = 9
 Output: [1,2]
@@ -253,26 +233,26 @@ Output: [1,2]
 Input: numbers = [1,2,3,4,4,9,56,90], target = 8
 Output: [4,5]
 
-💡 Approach
-This uses the Two-Pointer Technique since the input array is already sorted:
+## 💡 Approach
+- This uses the Two-Pointer Technique since the input array is already sorted:
 
-Initialize two pointers:
+- Initialize two pointers:
 
-l (left) at the start of the array
+- l (left) at the start of the array
 
-r (right) at the end of the array
+- r (right) at the end of the array
 
-While l < r:
+- While l < r:
 
-Calculate the sum of numbers[l] + numbers[r]
+- Calculate the sum of numbers[l] + numbers[r]
 
-If the sum is less than the target, move l to the right (increase l)
+- If the sum is less than the target, move l to the right (increase l)
 
-If the sum is greater than the target, move r to the left (decrease r)
+- If the sum is greater than the target, move r to the left (decrease r)
 
-If the sum equals the target, return [l + 1, r + 1] (1-based indices)
+- If the sum equals the target, return [l + 1, r + 1] (1-based indices)
 
-🧠 Code Explanation
+## Javascript Solution
 ```js
 var twoSum = function(numbers, target) {
     let l = 0;                  
@@ -289,26 +269,22 @@ var twoSum = function(numbers, target) {
         }
     }
 };
-
-
-🕒 Time & Space Complexity
-
-Time Complexity: O(n) — Each element is visited at most once.
-Space Complexity: O(1) — No extra space used apart from variables.
-
-📄 License
-This code is free to use for practice, learning, and educational purposes.
 ```
+
+## 🕒 Time & Space Complexity
+
+- Time Complexity: O(n) — Each element is visited at most once.
+- Space Complexity: O(1) — No extra space used apart from variables.
+
+
 
 ### 7 Remove Element – LeetCode Solution
 
 ## 🧩 Problem Description
-```js
-Given an integer array `nums` and an integer `val`, remove all occurrences of `val` **in-place** and return the new length of the array.
 
-Do not allocate extra space for another array — you must do this by modifying the input array in-place with **O(1)** extra memory.
-
-The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+- Given an integer array `nums` and an integer `val`, remove all occurrences of `val` **in-place** and return the new length of the array.
+- Do not allocate extra space for another array — you must do this by modifying the input array in-place with **O(1)** extra memory.
+- The order of elements can be changed. It doesn't matter what you leave beyond the new length.
 
 
 ---
@@ -318,10 +294,11 @@ The order of elements can be changed. It doesn't matter what you leave beyond th
 Input: nums = [3, 2, 2, 3], val = 3  
 Output: 2, nums = [2, 2, _, _]
 
-Explanation: Your function should return length = 2, and the first two elements of nums should be 2.
-It doesn't matter what you leave beyond the returned length.
+## Explanation:
+- Your function should return length = 2, and the first two elements of nums should be 2.
+- It doesn't matter what you leave beyond the returned length.
 
-✅ Constraints
+## ✅ Constraints
 0 <= nums.length <= 100
 
 0 <= nums[i] <= 50
@@ -330,6 +307,7 @@ It doesn't matter what you leave beyond the returned length.
 
 🚀 Solutions
 
+```js
 ✅ JavaScript
 var removeElement = function(nums, val) {
     let k = 0;
@@ -351,23 +329,23 @@ def removeElement(self, nums, val):
             nums[k] = i
             k += 1
     return k
-
-🧠 Explanation
-k is a pointer to place valid elements (not equal to val).
-
-If nums[i] !== val, the element is copied to index k, and k is incremented.
-
-After the loop, k is the number of elements not equal to val.
-
-🛡️ Key Takeaways
-    In-place removal using the two-pointer technique
-    O(n) time complexity
-    O(1) space complexity
 ```
+## 🧠 Explanation
+- k is a pointer to place valid elements (not equal to val).
+
+- If nums[i] !== val, the element is copied to index k, and k is incremented.
+
+- After the loop, k is the number of elements not equal to val.
+
+## 🛡️ Key Takeaways
+- In-place removal using the two-pointer technique
+- O(n) time complexity
+- O(1) space complexity
+
 ------------------------------------------------------------
 ## 8 Remove Duplicates from Sorted Array – LeetCode Solution
 
-🧩 Problem Description
+## 🧩 Problem Description
 
 Given a **sorted array** `nums`, remove the duplicates **in-place** such that each element appears only **once** and return the new length.
 
@@ -378,20 +356,23 @@ You must do this by modifying the input array **in-place** with **O(1)** extra m
 
 Input: nums = [1, 1, 2]
 Output: 2, nums = [1, 2, _]
-Explanation: Your function should return 2, and the first two elements of nums should be 1 and 2.
+
+## Explanation: 
+Your function should return 2, and the first two elements of nums should be 1 and 2.
 It does not matter what values are left beyond the returned length.
 
-✅ Constraints
+## ✅ Constraints
 1 <= nums.length <= 3 * 10^4
 
 -100 <= nums[i] <= 100
 
 nums is sorted in non-decreasing order
 
-🚀 Solutions
+## 🚀 Solutions
 
-✅ JavaScript (In-Place)
+
 ```js
+✅ JavaScript (In-Place)
 var removeDuplicates = function(nums) {
     if (nums.length === 0) return 0;
 
@@ -419,24 +400,24 @@ def removeDuplicates(self, nums):
             nums[k] = nums[i]
             k += 1
     return k
-
-🧠 How It Works
-The array is already sorted.
-
-You scan the array with a loop starting from index 1.
-
-Each time you find a new unique number (i.e., different from the previous), you write it to index k.
-
-k keeps track of the position to place the next unique value.
-
-Return k as the new length of the array.
-
-🛡️ Key Takeaways
-    Efficient two-pointer approach
-    Time Complexity: O(n)
-    Space Complexity: O(1) (in-place)
-    Original array is modified; no extra memory is used.
 ```
+## 🧠 How It Works
+- The array is already sorted.
+
+- You scan the array with a loop starting from index 1.
+
+- Each time you find a new unique number (i.e., different from the previous), you write it to index k.
+
+- k keeps track of the position to place the next unique value.
+
+- Return k as the new length of the array.
+
+## 🛡️ Key Takeaways
+- Efficient two-pointer approach
+- Time Complexity: O(n)
+- Space Complexity: O(1) (in-place)
+- Original array is modified; no extra memory is used.
+
 
 -----------------------------------------------------------
 
@@ -459,35 +440,19 @@ Write a function to **reverse the array in-place** without using extra memory.
 
 ### 🧠 Input:
 ["h", "e", "l", "l", "o"]
-✅ Output:
+## ✅ Output:
 ["o", "l", "l", "e", "h"]
 
-📷 Visual Diagram
-Initial:
-Index →   0   1   2   3   4
-         [h,  e,  l,  l,  o]
-          ↑            ↑
-         left        right
+## 🧠 Approach
+- Use two pointers: left (start) and right (end)
 
-Step 1: swap(s[0], s[4])
-         [o,  e,  l,  l,  h]
+- While left < right:
 
-Step 2: swap(s[1], s[3])
-         [o,  l,  l,  e,  h]
+- Swap s[left] with s[right]
 
-Step 3: stop when left >= right
-         [o,  l,  l,  e,  h] ✅
+- Move left forward, right backward
 
-🧠 Approach
-Use two pointers: left (start) and right (end)
-
-While left < right:
-
-Swap s[left] with s[right]
-
-Move left forward, right backward
-
-Continue until both pointers meet or cross
+- Continue until both pointers meet or cross
 
 🐍 Python Solution
 ```js
@@ -510,11 +475,11 @@ var reverseString = function(s) {
     }
     return s;
 };
-
-⚙️ Time & Space Complexity
-Time Complexity	O(n)
-Space Complexity	O(1) ✅ (in-place)
 ```
+## ⚙️ Time & Space Complexity
+- Time Complexity	O(n)
+- Space Complexity	O(1) ✅ (in-place)
+
 ----------------------------------------------------------------
 
 ## 10 💹 Best Time to Buy and Sell Stock – LeetCode Solution
@@ -536,31 +501,27 @@ Your goal is to choose a day to **buy one stock** and a different day in the fut
 
 ### Input:
 prices = [7, 1, 5, 3, 6, 4]
-Output:
-5
-Explanation:
+## Output: 5
+
+## Explanation:
 Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6 - 1 = 5.
 
-📷 Visual Diagram
-Index →    0   1   2   3   4   5
-Prices →  [7,  1,  5,  3,  6,  4]
 
-Track minimum → 1
-Track max profit → 5 (from 6 - 1)
-🧠 Approach
-We scan the array only once while maintaining:
+## 🧠 Approach
+- We scan the array only once while maintaining:
 
-The minimum price so far
+- The minimum price so far
 
-The maximum profit so far
+- The maximum profit so far
 
-At each step:
+- At each step:
 
-Compute profit = prices[i] - minPrice
+- Compute profit = prices[i] - minPrice
 
-Update maxProfit if profit is higher
+- Update maxProfit if profit is higher
 
-Update minPrice if prices[i] is lower
+- Update minPrice if prices[i] is lower
+
 ```js
 🐍 Python Solution
 def maxProfit(self, prices):
@@ -586,52 +547,53 @@ var maxProfit = function(prices) {
 
     return maxProfit;
 };
+```
+## ⚙️ Time & Space Complexity
+- Time Complexity	O(n)
+- Space Complexity	O(1) ✅
 
-⚙️ Time & Space Complexity
-Time Complexity	O(n)
-Space Complexity	O(1) ✅
-
-🛡️ Key Takeaways
+## 🛡️ Key Takeaways
 a. No nested loops needed — single pass solution
 b. In-place and memory efficient
 c. This greedy approach is ideal for time-sensitive trading apps
-```
+
 
 ****************************************************************************************************************
 
 ## 11 🔍 Binary Search in JavaScript
 This repository contains a simple and efficient implementation of the Binary Search algorithm in JavaScript. Binary Search is a classic algorithm used to find the position of a target value within a sorted array in O(log n) time.
 
-📌 Problem Statement
+## 📌 Problem Statement
 Given a sorted array of integers nums and a target value target, return the index of the target if it is present in the array. Otherwise, return -1.
 
-✅ Example
+## ✅ Example
 
-Input:
+## Input:
   nums = [1, 2, 3, 4, 5, 6]
   target = 5
 
-Output:
+## Output:
   4
+
 ## 🧠 Binary Search Logic
-Start with two pointers: left = 0 and right = nums.length - 1.
+- Start with two pointers: left = 0 and right = nums.length - 1.
 
-While left <= right:
+- While left <= right:
 
-Calculate the mid index.
+- Calculate the mid index.
 
-If nums[mid] === target, return mid.
+- If nums[mid] === target, return mid.
 
-If nums[mid] < target, search the right half (left = mid + 1).
+- If nums[mid] < target, search the right half (left = mid + 1).
 
-If nums[mid] > target, search the left half (right = mid - 1).
+- If nums[mid] > target, search the left half (right = mid - 1).
 
-If not found, return -1.
+- If not found, return -1.
 
-💡 Time Complexity
-Time: O(log n)
+## 💡 Time Complexity
+- Time: O(log n)
 
-Space: O(1) (Iterative version)
+- Space: O(1) (Iterative version)
 
 ```js
 javascript Solution
@@ -662,3 +624,73 @@ let x = 5;
 console.log(binarySearch(ar, x)); // Output: 4
 
 ```
+
+## 🔁 12. Contains Duplicate
+
+### 🧩 Problem
+Given an integer array `nums`, return `true` if any value appears **at least twice**, and `false` if every element is distinct.
+
+### 🔍 Approach: Using Set
+- Iterate through the array.
+- Use a `Set` to track seen elements.
+- If an element already exists in the set, return `true`.
+- If loop completes, return `false`.
+
+### ✅ Solution (JavaScript)
+```js
+var containsDuplicate = function(nums) {
+    const seen = new Set();
+
+    for (let num of nums) {
+        if (seen.has(num)) {
+            return true;
+        }
+        seen.add(num);
+    }
+
+    return false;
+};
+```
+## ⏱️ Time Complexity
+- O(n) — We scan each element once.
+
+- O(n) — Space for the Set.
+
+
+## 💰 13. Maximum Erasure Value
+
+## 🧩 Problem
+You are given an array of positive integers nums. Find the maximum sum of a subarray with all unique elements.
+
+## 🔍 Approach: Sliding Window + Set
+
+- Use a sliding window (start and end) and a Set to store unique elements.
+- Keep track of currentSum and maxSum.
+- Move end to expand the window, and shrink start when a duplicate is found.
+
+## ✅ Solution (JavaScript)
+```js
+
+var maximumUniqueSubarray = function(nums) {
+    const seen = new Set();
+    let maxSum = 0, currentSum = 0, start = 0;
+
+    for (let end = 0; end < nums.length; end++) {
+        while (seen.has(nums[end])) {
+            seen.delete(nums[start]);
+            currentSum -= nums[start];
+            start++;
+        }
+
+        seen.add(nums[end]);
+        currentSum += nums[end];
+        maxSum = Math.max(maxSum, currentSum);
+    }
+
+    return maxSum;
+};
+```
+## ⏱️ Time Complexity
+- O(n) — Each element is added and removed from the set once.
+
+- O(n) — For the Set.
